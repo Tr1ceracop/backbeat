@@ -1,0 +1,14 @@
+[Unit]
+Description=Backbeat - Active Time Tracker
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.nix-profile/bin/backbeat start
+Restart=on-failure
+RestartSec=5
+Environment=PATH=%h/.nix-profile/bin:/run/current-system/sw/bin
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+
+[Install]
+WantedBy=graphical-session.target
